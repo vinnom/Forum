@@ -44,10 +44,10 @@ public class TopicosController {
 	public Page<TopicoDTO> lista(@RequestParam(required = false) String nomeCurso,
 			@PageableDefault(page = 0, size = 10, sort = "id") Pageable paginacao) {
 		
-		if (nomeCurso == null) {
-			return TopicoDTO.converte(topicosRepository.findAll(paginacao));
+		if (nomeCurso != null) {
+			return TopicoDTO.converte(topicosRepository.findByCurso_Nome(nomeCurso, paginacao));
 		}
-		return TopicoDTO.converte(topicosRepository.findByCurso_Nome(nomeCurso, paginacao));
+		return TopicoDTO.converte(topicosRepository.findAll(paginacao));
 	}
 
 	@PostMapping
