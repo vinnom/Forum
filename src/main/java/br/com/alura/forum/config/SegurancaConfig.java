@@ -48,6 +48,7 @@ public class SegurancaConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests()
 		.antMatchers(GET, "/topicos").permitAll()
 		.antMatchers(GET, "/topicos/*").permitAll()
+		.antMatchers(GET, "/actuator/**").permitAll()
 		.antMatchers(POST, "/auth").permitAll()
 		.anyRequest().authenticated()
 		.and().csrf().disable()
